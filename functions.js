@@ -64,6 +64,7 @@ function getLetters(parameter)
         var currentCh = parameter.slice(i-1, i );
         if ((/[a-zA-Z]/).test(currentCh))
         {
+
             generatedString = generatedString.concat(currentCh);
         }
     }
@@ -82,16 +83,17 @@ function getFirst5Letters(parameter)
 { 
     let generatedStringFor5Letters ="";
     let contor = 0;
+
     for ( let i=1; i<=parameter.length; i++)
     {
         var currentCh = parameter.slice(i-1, i );
         if ((/[a-zA-Z]/).test(currentCh))
         {
-          contor++;
-          if (contor <= 5)
-          {
+            contor++;
+            if (contor <= 5)
+            {
             generatedStringFor5Letters = generatedStringFor5Letters.concat(currentCh);
-          }
+            }
         }
     }
     return generatedStringFor5Letters;
@@ -108,6 +110,7 @@ console.log("4. concatenate: ",concatenate(cars));
 function concatenate(arr)
 {
     let stringConcat ="";
+
     for (let i=0; i < arr.length; i++)
     {        
         stringConcat = stringConcat.concat(arr[i]);
@@ -118,7 +121,6 @@ function concatenate(arr)
 
 /**
  * 5.O functie "getAllDigits" care primeste o lista de siruri de caractere si returneaza cifrele din toate sirurile
- * 
  */
 let param = ["100","299"];
 let test =  getAllDigits(param);
@@ -129,16 +131,16 @@ function getAllDigits(array)
     let generatedString = "";
     let currentCharacter ="";
     let ValCurr ="";
+
     for ( let i=1; i<=array.length; i++)
     {
-         currentCharacter = array.slice(i-1, i);
-        //if (String(currentCharacter))
+        currentCharacter = array.slice(i-1, i);
         currentCharacter = String(currentCharacter);
         if (currentCharacter.length >= 1 )
         {
             for ( let j=0; j<=currentCharacter.length; j++)
             {
-                ValCurr = currentCharacter.charAt(j);
+               ValCurr = currentCharacter.charAt(j);
               
                if (Number(ValCurr))
                 {
@@ -158,85 +160,92 @@ function getAllDigits(array)
 /**
  * 6.O functie "invertAllStrings" care primeste o lista de siruri de caractere si returneaza lista de siruri de caractere inversate
  */
-let testArray = invertAllStrings(["a1","b2","c3"]);
-console.log("5. invertAllStrings :",testArray);
+console.log(invertAllStrings(["a1","b2","c3"]));
+
 function invertAllStrings(array)
-{
-   
+{  
     let currentCharacter ="";
-    let ValCurr ="";
-    let aux ="";
-    let counter =0;
+    //let counter =0;
     let newArray  = [];
+    
     for ( let i=1; i<=array.length; i++)
     {
         currentCharacter = array.slice(i-1, i);
-        currentCharacter = String(currentCharacter);
-        aux = currentCharacter.reverse;
-        newArray[counter] = newArray.push(aux);
-        counter++
-       
+        let result="";
+        currentCharacter = String(array.slice(i-1, i));
+        result = currentCharacter.split("").reverse().join("");
+        newArray.push(result);
+        //counter++
     }
     return newArray;
 }
 
 /**
  * 7.Calculeaza factorialul unui numar ("factorial")
- * 
- * 
  */ 
 let factorialResult = factorial(3);
 console.log("7. N factorial is : ",factorialResult);
 function factorial(n)
 {
-    
     var result = n;
     if (n === 0 || n === 1) 
+    {
         return 1; 
-    while (n > 1) { 
+    } 
+    while (n > 1)
+    { 
         n--;
-        result *= n;
+       result *= n;
     }
-    return result; 
+    return result;
 }
+
  /**
  * 8.Calculeaza cel mai mare divizor comun al 2 numere ("cmmdc")
  */
 console.log(cmmdc(12, 13));
-console.log(cmmdc(9, 3));
 
-function cmmdc(x, y) {
-    if ((typeof x !== 'number') || (typeof y !== 'number')) 
-      return false;
+function cmmdc(x, y) 
+{
+    if ((typeof x !== 'number') || (typeof y !== 'number'))
+    {
+        return false;
+    } 
     x = Math.abs(x);
     y = Math.abs(y);
-    while(y) {
-      var t = y;
-      y = x % y;
-      x = t;
+    while(y) 
+    {
+    var t = y;
+    y = x % y;
+    x = t;
     }
     return x;
-  }
+}
   
 
+  
 /**
  * 9.Calculeaza cel mai mic multiplu comun al 2 numere ("cmmmc")
  */
 console.log(cmmmc(3,15));
-console.log(cmmmc(10,15));
 
 function cmmmc(x, y) 
 {
     if ((typeof x !== 'number') || (typeof y !== 'number')) 
-    return false;
-    return (!x || !y) ? 0 : Math.abs((x * y) / numbers(x, y));
+    {
+        return false;
+    }
+    else 
+    {
+        return (!x || !y) ? 0 : Math.abs((x * y) / numbers(x, y));
+    }
+    
 }
- 
 function numbers(x, y) 
 {
     x = Math.abs(x);
     y = Math.abs(y);
-    while(y) 
+    while(y)
     {
         var t = y;
         y = x % y;
@@ -244,13 +253,13 @@ function numbers(x, y)
     }
     return x;
 }
-
  
  
 /**
  * 10.Returneaza un array care sa contina toti divizorii unui numar (ex pentru 64: trebuie sa returneze [2,4,8,16,32]) ("divizori")
  */
 console.log("array",divizori(64));
+
 function divizori(n)
 {
     var arrayOfDivisors = [];   
@@ -262,16 +271,16 @@ function divizori(n)
       if(n % mod === 0)
       {
         divisors++;
-        
-        console.log("mod :",mod);
+        //console.log("mod :",mod);
         if (mod === n || mod === 1)
         {
-            console.log("mod",mod, "egal");
+             console.log("mod",mod, "egal");
+             //continue;
         }
         else
         {
             arrayOfDivisors.push(mod);
-        } 
+        }
       }
       mod--;
     }
@@ -283,18 +292,19 @@ function divizori(n)
  */
 
 console.log("11. The invers numbers is: ", palindrom(121));
-function palindrom(n)
+function palindrom(param)
 {
-    let originalNumber = Number(n);
+    let originalNumber = Number(param);
     let result = '';
-    if(typeof n === 'number')
+
+    if(typeof param === 'number')
     {
-         n = '' + n + '';
+        param = '' + param + '';
     }
 
-    for(var i = n.length; i >= 0; i--)
+    for(var i = param.length; i >= 0; i--)
     {
-        result += n.charAt(i);
+        result += param.charAt(i);
     }
 
     result = parseInt(result);
@@ -322,7 +332,11 @@ function sort(sArray)
             sortedArray.push(sArray[i]);
         }
     }
-    // for( let i=1 ; i< sortedArray.length ; i++)
+ 
+    sortedArray = sortedArray.sort((a, b) => a - b);
+    return sortedArray;
+
+       // for( let i=1 ; i< sortedArray.length ; i++)
     // {
     //     while ( sortedArray[i-1] > sortedArray[i] )
     //     {
@@ -332,8 +346,6 @@ function sort(sArray)
     //         sortedArray[i] = auxiliar;
     //     }
     // }
-    sortedArray = sortedArray.sort((a, b) => a - b);
-    return sortedArray;
 }
 
 
@@ -406,36 +418,33 @@ function binarySearch(arrayForBinarySearch, value)
 
 /**
  * 15.O functie care implementeaza binary search pentru a verifica daca un numar se regaseste intr-un array. Dupa ce se termina executia functiei trebuie sa returnati de cate ori s-a apelat functia recursiv ("countBinarySearch")
+ * 
  */
 
-function countBinarySearch(arrayForBinarySearch, value) {
-    let high = array.length - 1;
-    let low = 0;
-    let counter =0;
 
-    if (value < array[low] || value > array[high]) 
-        counter++;
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13];
+
+console.log(countBinarySearch(arr,1 ));
+
+function countBinarySearch(arr, searchNumb) {
+    var length = arr.length;
+    var midPoint = Math.floor(length / 2);
+    var newArr = arr;
+    console.log(arr);
+    console.log("array midpoint value: " + arr[midPoint]);
+     counter++;
+     console.log("counter: ",counter);
+    if (arr[midPoint] > searchNumb) {
+
+        var newArr = arr.slice(0, midPoint);
+        return countBinarySearch(newArr, searchNumb);
+
+    } else if (arr[midPoint] < searchNumb) {
+
+        var newArr = arr.slice(midPoint + 1, arr.length);
+        return countBinarySearch(newArr, searchNumb);
+
+    } else {
         return counter;
-
-    while (high >= low) {
-        let mid = (high + low) >> 1;
-        counter++;
-        if (value === array[mid])
-        {
-            counter++;
-           
-        }
-            
-        else if (value < array[mid]){
-            high = mid - 1;
-            counter++;}
-        else
-        {
-            low = mid + 1;
-            counter++
-        }
-            
-    }
-
-    return counter;
+    } 
 }
